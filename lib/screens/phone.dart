@@ -11,6 +11,7 @@ class MyPhone extends StatefulWidget {
 }
 
 class _MyPhoneState extends State<MyPhone> {
+  bool loading = false;
   TextEditingController countryController = TextEditingController();
   var phone = "";
 
@@ -140,28 +141,37 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 20,
               ),
               SizedBox(
-                width: double.infinity,
-                height: 45,
-                child: ElevatedButton(
+                  width: double.infinity,
+                  height: 45,
+                  child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green.shade600,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: () async {
-                      await FirebaseAuth.instance.verifyPhoneNumber(
-                        phoneNumber: '${countryController.text + phone}',
-                        verificationCompleted:
-                            (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
-                        codeSent: (String verificationId, int? resendToken) {
-                          MyPhone.varify = verificationId;
-                          Navigator.pushNamed(context, 'verify');
-                        },
-                        codeAutoRetrievalTimeout: (String verificationId) {},
-                      );
-                    },
-                    child: Text("Send the code")),
-              )
+                    onPressed: loading
+                        ? null
+                        : () async {
+                            setState(() {
+                              loading = true;
+                            });
+                            await FirebaseAuth.instance.verifyPhoneNumber(
+                              phoneNumber: '${countryController.text + phone}',
+                              verificationCompleted:
+                                  (PhoneAuthCredential credential) {},
+                              verificationFailed: (FirebaseAuthException e) {},
+                              codeSent:
+                                  (String verificationId, int? resendToken) {
+                                MyPhone.varify = verificationId;
+                                Navigator.pushNamed(context, 'verify');
+                              },
+                              codeAutoRetrievalTimeout:
+                                  (String verificationId) {},
+                            );
+                          },
+                    child: loading
+                        ? CircularProgressIndicator()
+                        : Text("Send the code"),
+                  ),),
             ],
           ),
         ),

@@ -12,7 +12,9 @@ class MyVerify extends StatefulWidget {
 }
 
 class _MyVerifyState extends State<MyVerify> {
+  bool loading = false;
   final FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -105,25 +107,42 @@ class _MyVerifyState extends State<MyVerify> {
                 width: double.infinity,
                 height: 45,
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green.shade600,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
-                    onPressed: () async {
-                      try {
-                        PhoneAuthCredential credential =
-                            PhoneAuthProvider.credential(
-                                verificationId: MyPhone.varify, smsCode: code);
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green.shade600,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                  ),
+                  onPressed: loading
+                      ? null
+                      : () async {
+                          setState(() {
+                            loading = true;
+                          });
 
-                        // Sign the user in (or link) with the credential
-                        await auth.signInWithCredential(credential);
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, "drawer_screen", (route) => false);
-                      } catch (e) {
-                        print("Wrong OTP");
-                      }
-                    },
-                    child: Text("Verify Phone Number")),
+                          try {
+                            PhoneAuthCredential credential =
+                                PhoneAuthProvider.credential(
+                              verificationId: MyPhone.varify,
+                              smsCode: code,
+                            );
+
+                            // Sign the user in (or link) with the credential
+                            await auth.signInWithCredential(credential);
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              "drawer_screen",
+                              (route) => false,
+                            );
+                          } catch (e) {
+                            print("Wrong OTP");
+                          }
+
+                          setState(() {
+                            loading = false;
+                          });
+                        },
+                  child: Text("Verify Phone Number"),
+                ),
               ),
               Row(
                 children: [
@@ -141,14 +160,15 @@ class _MyVerifyState extends State<MyVerify> {
                       ))
                 ],
               ),
-                 SizedBox(height: 20),
-                 Text("Resent New Code",
-                 style: TextStyle(
+              SizedBox(height: 20),
+              Text(
+                "Resent New Code",
+                style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.green.shade600,
-                 ),
-                 )
+                ),
+              ),
             ],
           ),
         ),

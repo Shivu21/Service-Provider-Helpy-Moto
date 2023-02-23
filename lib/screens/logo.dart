@@ -28,7 +28,7 @@ class _LogoState extends State<Logo> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyPhone(),
+                    builder: (context) => DrawerScreen(),
                   ),
                 );
               },

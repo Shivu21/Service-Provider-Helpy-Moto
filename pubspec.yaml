@@ -24,14 +24,16 @@ dependencies:
   cached_network_image: ^3.2.3
   country_picker: ^2.0.19
   cupertino_icons: ^1.0.2
-  firebase_auth: ^4.2.5
+  firebase_auth: ^4.2.9
   firebase_core: ^2.4.1
   flutter:
     sdk: flutter
   flutter_otp: ^0.3.2
   flutter_sms: ^2.3.3
+  flutter_svg: ^2.0.1
   flutter_zoom_drawer: ^3.0.3
   google_sign_in: ^5.4.3
+  mongo_dart: ^0.8.2
   pinput: ^2.2.21
   shared_preferences: ^2.0.17
   validation_assistant: ^1.1.2
