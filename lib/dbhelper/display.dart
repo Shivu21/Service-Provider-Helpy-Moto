@@ -1,6 +1,5 @@
+// import 'package:ServiceProviderApp/dbhelper/mongodb.dart';
 // import 'package:flutter/material.dart';
-// import 'package:loginuicolors/dbhelper/mongodb.dart';
-// import 'package:loginuicolors/dbhelper/mongodbmodel.dart';
 
 // class MongoDBDisplay extends StatefulWidget {
 //   const MongoDBDisplay({Key? key}) : super(key: key);
@@ -31,10 +30,9 @@
 //                       itemCount: snapshot.data!.length,
 //                       itemBuilder: (context, index) {
 //                         return displayCard(
-//                           MongoDbModel.fromJson(snapshot.data![index]),
+//                           MongoDbModel.fromMap(snapshot.data![index]),
 //                         );
-//                       }
-//                   );
+//                       });
 //                 } else {
 //                   return Center(
 //                     child: Text("No Data Available."),
@@ -68,5 +66,25 @@
 //         ),
 //       ),
 //     );
+//   }
+// }
+
+// class MongoDbModel {
+//   final String customerName;
+//   final String vechicleName;
+//   final String query;
+
+//   MongoDbModel({
+//     required this.customerName,
+//     required this.vechicleName,
+//     required this.query,
+//   });
+
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'name': customerName,
+//       'age': vechicleName,
+//       'phone': query,
+//     };
 //   }
 // }

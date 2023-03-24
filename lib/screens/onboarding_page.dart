@@ -1,10 +1,10 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import '../Main_Screen/home.dart';
+import '../booking_screens/booking.dart';
+import '../main_profile_screens/profile.dart';
 import '../utils/billsscreen.dart';
-import '../utils/booking.dart';
-import '../utils/home.dart';
-import '../utils/map.dart';
-import '../utils/profile.dart';
 
 class Onboarding_page extends StatefulWidget {
   @override
@@ -12,13 +12,10 @@ class Onboarding_page extends StatefulWidget {
 }
 
 class _Onboarding_pageState extends State<Onboarding_page> {
-
-
   final List<Widget> _screens = [
     HomeScreen(),
     BillsScreen(),
     BookingScreen(),
-    MapsScreen(),
     ProfileScreen(),
   ];
 
@@ -33,57 +30,60 @@ class _Onboarding_pageState extends State<Onboarding_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        backgroundColor: Colors.blue,
+      extendBody: true,
+      appBar: AppBar(
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             if (ZoomDrawer.of(context)!.isOpen()) {
               ZoomDrawer.of(context)!.close();
             } else {
               ZoomDrawer.of(context)!.open();
             }
           },
-          icon: const Icon(Icons.menu, color: Colors.white,),
+          icon: const Icon(Icons.menu, color: Colors.black54),
         ),
-       ),
+        title: Text(
+          "HELPY MOTO",
+          style: TextStyle(
+            color: Colors.grey[500],
+            fontWeight: FontWeight.bold, // adds bold styling
+            fontSize: 22.0, // changes font size
+            letterSpacing: 1.5, // increases letter spacing
+            fontFamily:
+                'YourCustomFont', // replace 'YourCustomFont' with your desired font family
+          ),
+        ),
+        actions: <Widget>[
+          GestureDetector(
+            onTap: () {
+              // Set up your onTap logic here
+              // Do something
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: Icon(Icons.notifications, color: Colors.blue),
+            ),
+          )
+        ],
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: _screens[_selectedIndex],
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.circular(50.0),
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              backgroundColor: Colors.pink,
-              label: ('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.receipt),
-              backgroundColor: Colors.amber,
-              label: ('Bills'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              backgroundColor: Colors.cyan,
-              label: ('Booking'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.map),
-              backgroundColor: Colors.deepOrange,
-              label: ('Maps'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              backgroundColor: Colors.lightGreen,
-              label: ('Profile'),
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          selectedItemColor: Color.fromARGB(255, 14, 17, 20),
-          unselectedItemColor: Color.fromARGB(255, 250, 247, 247),
-          backgroundColor: Color.fromARGB(255, 240, 244, 247),
-          elevation: 1,
-        ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.white,
+        color: Colors.blue,
+        buttonBackgroundColor: Colors.blue,
+        height: 50,
+        animationCurve: Curves.easeInOut,
+        animationDuration: Duration(milliseconds: 400),
+        items: <Widget>[
+          Icon(Icons.home, size: 30),
+          Icon(Icons.receipt, size: 30),
+          Icon(Icons.calendar_today, size: 30),
+          Icon(Icons.person, size: 30),
+        ],
+        index: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }

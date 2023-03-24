@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loginuicolors/screens/phone.dart';
-import 'package:loginuicolors/screens/status.dart';
+import 'package:ServiceProviderApp/screens/phone.dart';
 import 'package:pinput/pinput.dart';
 
 class MyVerify extends StatefulWidget {
@@ -64,7 +63,7 @@ class _MyVerifyState extends State<MyVerify> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'lib/assets/img1.png',
+                'lib/assets/images/img1.png',
                 width: 200,
                 height: 200,
               ),
@@ -130,7 +129,7 @@ class _MyVerifyState extends State<MyVerify> {
                             await auth.signInWithCredential(credential);
                             Navigator.pushNamedAndRemoveUntil(
                               context,
-                              "drawer_screen",
+                              "signup_form",
                               (route) => false,
                             );
                           } catch (e) {

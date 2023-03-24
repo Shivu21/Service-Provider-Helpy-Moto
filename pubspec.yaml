@@ -1,5 +1,5 @@
-name: loginuicolors
-description: A new Flutter application.
+name: ServiceProviderApp
+description: Mechanic App for Services.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -24,18 +24,20 @@ dependencies:
   cached_network_image: ^3.2.3
   country_picker: ^2.0.19
   cupertino_icons: ^1.0.2
+  curved_navigation_bar: ^1.0.3
+  dynamic_color: ^1.6.2
   firebase_auth: ^4.2.9
   firebase_core: ^2.4.1
   flutter:
     sdk: flutter
   flutter_otp: ^0.3.2
-  flutter_sms: ^2.3.3
   flutter_svg: ^2.0.1
   flutter_zoom_drawer: ^3.0.3
   google_sign_in: ^5.4.3
   mongo_dart: ^0.8.2
   pinput: ^2.2.21
   shared_preferences: ^2.0.17
+  url_launcher: ^6.1.10
   validation_assistant: ^1.1.2
 
 dev_dependencies:
@@ -54,11 +56,18 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/login.png
-    - lib/assets/register.png
-    - lib/assets/logo.png
-    - lib/assets/LoginAuthentication.png
-    - lib/assets/img1.png
+    - lib/assets/images/login.png
+    - lib/assets/images/register.png
+    - lib/assets/images/logo.png
+    - lib/assets/images/LoginAuthentication.png
+    - lib/assets/images/img1.png
+    - lib/assets/images/google_logo.png
+    - lib/assets/images/facebook.png
+    - lib/assets/images/instagram.png
+    - lib/assets/images/twitter.png
+    - lib/assets/images/towtruck.png
+    - lib/assets/images/siren.png
+    - lib/assets/images/cleaning-staff.png
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

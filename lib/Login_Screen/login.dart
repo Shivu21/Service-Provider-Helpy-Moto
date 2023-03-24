@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loginuicolors/screens/onboarding_page.dart';
+import '../screens/onboarding_page.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);
@@ -14,7 +14,8 @@ class _MyLoginState extends State<MyLogin> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('lib/assets/LoginAuthentication.png'), fit: BoxFit.cover),
+            image: AssetImage('lib/assets/images/LoginAuthentication.png'),
+            fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -80,14 +81,15 @@ class _MyLoginState extends State<MyLogin> {
                                 child: IconButton(
                                     color: Colors.white,
                                     onPressed: () {
-                                        // Perform login
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Onboarding_page(),
-                                          ),
-                                        );
-                                      },
+                                      // Perform login
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              Onboarding_page(),
+                                        ),
+                                      );
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -125,10 +127,10 @@ class _MyLoginState extends State<MyLogin> {
                                     ),
                                   )),
                             ],
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

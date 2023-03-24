@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ServiceProviderApp/drawer_screens/drawer_screen.dart';
+import 'package:ServiceProviderApp/booking_screens/booking.dart';
+import 'package:ServiceProviderApp/drawer_screens/help&support.dart';
+import 'package:ServiceProviderApp/drawer_screens/licenses.dart';
+import 'package:ServiceProviderApp/drawer_screens/privacy_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -27,49 +32,75 @@ class _MenuScreenState extends State<MenuScreen> {
                       'https://source.unsplash.com/50x50/?portrait'),
                 ),
                 SizedBox(height: 10.0),
-                Text('Harsh Sharma'),
+                Text('User Name'),
                 SizedBox(height: 20.0),
                 Expanded(
                   child: ListView(
                     children: [
                       ListTile(
-                        leading: Icon(Icons.person),
-                        title: Text('Home'),
-                        onTap: () {
-                          // Add onTap logic here
-                        },
-                      ),
+                          leading: Icon(Icons.person),
+                          title: Text('Home'),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DrawerScreen(),
+                                ));
+                          }),
                       ListTile(
-                        leading: Icon(Icons.settings),
-                        title: Text('Select Your Vehicle'),
-                        onTap: () {
-                          // Add onTap logic here
-                        },
-                      ),
+                          leading: Icon(Icons.settings),
+                          title: Text('Booking'),
+                          onTap: () {
+                            // Add onTap logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookingScreen(),
+                              ),
+                            );
+                          }),
                       ListTile(
                         leading: Icon(Icons.category_sharp),
-                        title: Text('Catagories'),
+                        title: Text('Privacy Policy'),
                         onTap: () {
                           // Add onTap logic here
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PrivacyScreen(),
+                            ),
+                          );
                         },
                       ),
                       ListTile(
                         leading: Icon(Icons.branding_watermark),
-                        title: Text('Brands'),
+                        title: Text('Licenses'),
                         onTap: () {
                           // Add onTap logic here
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Licenses(),
+                            ),
+                          );
                         },
                       ),
                       ListTile(
                         leading: Icon(Icons.list_sharp),
-                        title: Text('Wishlist'),
+                        title: Text('Help & Support'),
                         onTap: () {
                           // Add onTap logic here
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Help_Support(),
+                            ),
+                          );
                         },
                       ),
                       ListTile(
-                        leading: Icon(Icons.money_off_csred_rounded),
-                        title: Text('My Orders'),
+                        leading: Icon(Icons.logout),
+                        title: Text('Log Out'),
                         onTap: () {
                           // Add onTap logic here
                         },

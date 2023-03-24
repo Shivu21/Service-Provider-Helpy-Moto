@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loginuicolors/screens/drawer_screen.dart';
-import 'package:loginuicolors/screens/onboarding_page.dart';
-import 'package:loginuicolors/screens/phone.dart';
+import 'package:ServiceProviderApp/drawer_screens/drawer_screen.dart';
+import 'package:ServiceProviderApp/screens/phone.dart';
+import 'signup_form.dart';
 
 class Logo extends StatefulWidget {
   @override
@@ -18,7 +18,7 @@ class _LogoState extends State<Logo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('lib/assets/logo.png'),
+            Image.asset('lib/assets/images/logo.png'),
             SizedBox(height: 15),
             ElevatedButton(
               child: Text('Lets Go!'),

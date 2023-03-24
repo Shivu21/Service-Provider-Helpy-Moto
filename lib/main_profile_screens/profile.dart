@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:loginuicolors/utils/userhelp.dart';
-import 'package:loginuicolors/utils/userprofile.dart';
-import 'package:loginuicolors/utils/usersetting.dart';
-import 'package:loginuicolors/utils/usershare.dart';
-import 'package:loginuicolors/utils/userterms.dart';
+import 'package:ServiceProviderApp/main_profile_screens/userhelp.dart';
+import 'package:ServiceProviderApp/main_profile_screens/userprofile.dart';
+import 'package:ServiceProviderApp/main_profile_screens/usersetting.dart';
+import 'package:ServiceProviderApp/main_profile_screens/usershare.dart';
+import 'package:ServiceProviderApp/main_profile_screens/userterms.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
