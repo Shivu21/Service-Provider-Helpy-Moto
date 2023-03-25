@@ -14,8 +14,8 @@ class Onboarding_page extends StatefulWidget {
 class _Onboarding_pageState extends State<Onboarding_page> {
   final List<Widget> _screens = [
     HomeScreen(),
-    BillsScreen(),
     BookingScreen(),
+    BillsScreen(),
     ProfileScreen(),
   ];
 
@@ -78,9 +78,9 @@ class _Onboarding_pageState extends State<Onboarding_page> {
         animationDuration: Duration(milliseconds: 400),
         items: <Widget>[
           Icon(Icons.home, size: 30),
-          Icon(Icons.receipt, size: 30),
-          Icon(Icons.calendar_today, size: 30),
-          Icon(Icons.person, size: 30),
+          Icon(Icons.speaker_notes_sharp, size: 30),
+          Icon(Icons.receipt_outlined, size: 30),
+          Icon(Icons.person_sharp, size: 30),
         ],
         index: _selectedIndex,
         onTap: _onItemTapped,

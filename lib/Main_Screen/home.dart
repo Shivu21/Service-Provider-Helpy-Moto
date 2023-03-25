@@ -11,6 +11,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'package:flutter/services.dart';
 
+import 'ongoing_request.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -122,7 +124,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: GestureDetector(
                         onTap: () {
-                          // Handle card tap
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OngoingRequestCard(
+                                image: items[index]['image'].toString(),
+                                name: items[index]['name']!,
+                                subtitle: items[index]['subtitle']!,
+                                description: items[index]['description']!,
+                                bookingId: items[index]['bookingId']!,
+                                status: items[index]['status']!,
+                                serProvId: items[index]['serProvId']!,
+                                bill: items[index]['bill']!,
+                                createdTime: items[index]['createdTime']!,
+                                completeTime: items[index]['completeTime']!,
+                              ),
+                            ),
+                          );
                         },
                         child: Card(
                           child: Row(
@@ -132,7 +150,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 radius: screenWidth / 14,
                                 backgroundImage: NetworkImage(
                                     items[index]['image'].toString()),
-                                  
                               ),
                               Expanded(
                                 child: Padding(
@@ -142,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        items[index]['title']!,
+                                        items[index]['name']!,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: screenWidth / 28,
@@ -153,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         items[index]['subtitle']!,
                                         style: TextStyle(
                                           color: Colors.grey,
-                                          fontSize: screenWidth / 32,
+                                          fontSize: screenWidth / 30,
                                         ),
                                       ),
                                       SizedBox(height: 4),
@@ -161,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         items[index]['description']!,
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: screenWidth / 36,
+                                          fontSize: screenWidth / 34,
                                         ),
                                       ),
                                     ],
@@ -198,29 +215,45 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: screenWidth / 2,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Card(
-                        elevation: 2.0,
-                        color: item['color'] as Color?,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              item['imagePath'].toString(),
-                              width: screenWidth *
-                                  0.18, // Set the width as 10% of screen width
-                              height: screenHeight *
-                                  0.08, // Set the height as 8% of screen height
-                            ),
-                            SizedBox(height: 10),
-                            Text(
-                              item['title'].toString(),
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                fontSize: 12,
+                      child: GestureDetector(
+                        onTap: () {
+                          if (item['title'] == 'Towing Service') {
+
+                            // perform action for towing service card
+                          } else if (item['title'] == 'SOS') {
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SosScreen(),),);
+                            // perform action for SOS card
+                          } else {
+                            // perform action for other cards
+                          }
+                        },
+                        child: Card(
+                          elevation: 2.0,
+                          color: item['color'] as Color?,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                item['imagePath'].toString(),
+                                width: screenWidth *
+                                    0.18, // Set the width as 10% of screen width
+                                height: screenHeight *
+                                    0.08, // Set the height as 8% of screen height
                               ),
-                            ),
-                          ],
+                              SizedBox(height: 10),
+                              Text(
+                                item['title'].toString(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -254,27 +287,51 @@ final otheritems = [
 ];
 var items = <Map<String, String>>[
   {
-    'title': 'Shivam',
+    'image': 'https://source.unsplash.com/50x50/?portrait',
+    'name': 'Shivam',
     'subtitle': 'Rolls-Royce Phantom',
     'description': 'Cleaning',
-    'image': 'https://source.unsplash.com/50x50/?portrait',
+    'bookingId': '15014520',
+    'status': 'cancelled',
+    'serProvId': '2567890',
+    'bill': '1200',
+    'createdTime': '10/10/2020',
+    'completeTime': '11/10/2020',
   },
   {
-    'title': 'Rohit',
+    'image': 'https://loremflickr.com/50/50/people',
+    'name': 'Rohit',
     'subtitle': 'Mercedes-Mayback',
     'description': 'Engine Problem',
-    'image': 'https://source.unsplash.com/50x50/?portrait',
+    'bookingId': '15014520',
+    'status': 'Completed',
+    'serProvId': '2567890',
+    'bill': '1200',
+    'createdTime': '10/10/2020',
+    'completeTime': '11/10/2020',
   },
   {
-    'title': 'Suman',
+    'image': 'https://source.unsplash.com/50x50/?portrait,people',
+    'name': 'Suman',
     'subtitle': 'BMW 7-Series',
     'description': 'Cleaning',
-    'image': 'https://source.unsplash.com/50x50/?portrait',
+    'bookingId': '15014520',
+    'status': 'cancelled',
+    'serProvId': '2567890',
+    'bill': '1200',
+    'createdTime': '10/10/2020',
+    'completeTime': '11/10/2020',
   },
   {
-    'title': 'Mohit',
+    'image': 'https://picsum.photos/50/50/?random',
+    'name': 'Mohit',
     'subtitle': 'Audi A8',
-    'description': 'Service',
-    'image': 'https://source.unsplash.com/50x50/?portrait',
+    'description': 'Cleaning',
+    'bookingId': '15014520',
+    'status': 'cancelled',
+    'serProvId': '2567890',
+    'bill': '1200',
+    'createdTime': '10/10/2020',
+    'completeTime': '11/10/2020',
   },
 ];

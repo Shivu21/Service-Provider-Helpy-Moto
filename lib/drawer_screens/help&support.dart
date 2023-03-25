@@ -5,6 +5,9 @@ class Help_Support extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -80,7 +83,7 @@ class Help_Support extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                 Flexible(
                   flex: 1,
                   child: Align(
@@ -97,51 +100,36 @@ class Help_Support extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Flexible(
-                  flex: 1,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        // Send direct message on Twitter
-                      },
-                      icon: Icon(Icons.message),
-                      label: Text("Twitter"),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Image.asset(
+                      'lib/assets/images/twitter.png',
+                      width: screenWidth *
+                          0.1, // set image width as 10% of screen width
+                      height: screenHeight *
+                          0.05, // set image height as 5% of screen height
                     ),
+                    onPressed: () {},
                   ),
-                ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Flexible(
-                  flex: 1,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        // Send direct message on Facebook
-                      },
-                      icon: Icon(Icons.message),
-                      label: Text("Facebook"),
+                  IconButton(
+                    icon: Image.asset(
+                      'lib/assets/images/facebook.png',
+                      width: screenWidth * 0.1,
+                      height: screenHeight * 0.05,
                     ),
+                    onPressed: () {},
                   ),
-                ),
-                SizedBox(width: MediaQuery.of(context).size.width * 0.1),
-                Flexible(
-                  flex: 1,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        // Send direct message on Instagram
-                      },
-                      icon: Icon(Icons.message),
-                      label: Text("Instagram"),
+                  IconButton(
+                    icon: Image.asset(
+                      'lib/assets/images/instagram.png',
+                      width: screenWidth * 0.1,
+                      height: screenHeight * 0.05,
                     ),
+                    onPressed: () {},
                   ),
-                ),
-              ],
-            ),
+                ],
+              )
           ],
         ),
       ),

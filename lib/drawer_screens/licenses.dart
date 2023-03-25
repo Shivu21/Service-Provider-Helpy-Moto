@@ -5,6 +5,9 @@ class Licenses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -75,15 +78,29 @@ class Licenses extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: Image.asset('lib/assets/images/twitter.png'),
+                    icon: Image.asset(
+                      'lib/assets/images/twitter.png',
+                      width: screenWidth *
+                          0.1, // set image width as 10% of screen width
+                      height: screenHeight *
+                          0.05, // set image height as 5% of screen height
+                    ),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: Image.asset('lib/assets/images/facebook.png'),
+                    icon: Image.asset(
+                      'lib/assets/images/facebook.png',
+                      width: screenWidth * 0.1,
+                      height: screenHeight * 0.05,
+                    ),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: Image.asset('lib/assets/images/instagram.png'),
+                    icon: Image.asset(
+                      'lib/assets/images/instagram.png',
+                      width: screenWidth * 0.1,
+                      height: screenHeight * 0.05,
+                    ),
                     onPressed: () {},
                   ),
                 ],
